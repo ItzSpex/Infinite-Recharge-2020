@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.RamseteController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
-import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
@@ -29,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.Boomer;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.Constants.*;
+import frc.robot.subsystems.Intake;
 
 import java.util.List;
 
@@ -42,6 +42,7 @@ public class RobotContainer {
 
   private final Drivetrain m_robotDrive = new Drivetrain();
   private final Boomer m_shooter = new Boomer();
+  private final Intake m_intake = new Intake();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -68,10 +69,22 @@ public class RobotContainer {
 
 
   private void configureButtonBindings() {
-    //Shooter Button - Operator Green (A)
+    //Shooter Button - Operator Green (A) Button
     new JoystickButton(m_operatorController, XboxController.Button.kA.value)
             .whenPressed(new InstantCommand(m_shooter::shootBall, m_shooter))
             .whenReleased(new InstantCommand(m_shooter::StopMotors, m_shooter));
+    //Open Intake - Operator LB Button
+    new JoystickButton(m_operatorController,XboxController.Button.kBumperLeft.value)
+            .whenPressed(new InstantCommand(m_intake::OpenIntake, m_intake));
+    //Close Intake - Operator RB Button
+    new JoystickButton(m_operatorController,XboxController.Button.kBumperRight.value)
+            .whenPressed(new InstantCommand(m_intake::CloseIntake, m_intake));
+    //Start Intake - Operator Red (B) Button
+    new JoystickButton(m_operatorController,XboxController.Button.kB.value)
+            .whenPressed(new InstantCommand(m_intake::StartIntake, m_intake));
+    //Stop Intake - Operator Blue (X) Button
+    new JoystickButton(m_operatorController,XboxController.Button.kX.value)
+            .whenPressed(new InstantCommand(m_intake::StopIntake, m_intake));
   }
 
 

@@ -48,6 +48,13 @@ public final class Constants {
         public static final int kRightMotorPort = 1;
         public static final double kShootingSpeed = 0.7;
     }
+    public static final class IntakeConstants {
+        //TODO: get real ports for electronics.
+        public static final int kMotorPort = 3;
+        public static final int kRightSolenoidPort = 1;
+        public static final int kLeftSolenoidPort = 2;
+        public static final double kIntakeSpeed = 0.5;
+    }
     public static final class AutoConstants {
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
