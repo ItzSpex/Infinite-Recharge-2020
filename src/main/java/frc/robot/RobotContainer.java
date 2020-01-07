@@ -54,10 +54,10 @@ public class RobotContainer {
 
 
   private void configureButtonBindings() {
+    //Shooter Button - Operator Green (A)
     new JoystickButton(m_operatorController, XboxController.Button.kA.value)
-            .whenPressed(new InstantCommand(m_shooter::shootBall, m_shooter));
-    new JoystickButton(m_operatorController, XboxController.Button.kB.value)
-            .whenPressed(new InstantCommand(m_shooter::StopMotors, m_shooter));      
+            .whenPressed(new InstantCommand(m_shooter::shootBall, m_shooter))
+            .whenReleased(new InstantCommand(m_shooter::StopMotors, m_shooter));
   }
 
 
