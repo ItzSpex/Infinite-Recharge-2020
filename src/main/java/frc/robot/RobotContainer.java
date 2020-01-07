@@ -9,7 +9,14 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.subsystems.Boomer;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.Constants.OIConstants;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -18,11 +25,14 @@ import edu.wpi.first.wpilibj2.command.Command;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
-  //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final Drivetrain m_robotDrive = new Drivetrain();
+  private final Boomer m_shooter = new Boomer();
 
+  SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  XboxController m_operatorController = new XboxController(OIConstants.kOperatorControllerPort);
 
 
   /**
@@ -31,15 +41,23 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    m_robotDrive.setDefaultCommand(
+            new RunCommand(() -> m_robotDrive
+                    .arcadeDrive(m_driverController.getY(GenericHID.Hand.kLeft),
+                            m_driverController.getX(GenericHID.Hand.kRight)), m_robotDrive));
+
+    // Add commands to the autonomous command chooser
+
+    //Put the chooser on the dashboard
   }
 
-  /**
-   * Use this method to define your button->command mappings.  Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
-   * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
+
   private void configureButtonBindings() {
+    new JoystickButton(m_operatorController, XboxController.Button.kA.value)
+            .whenPressed(new InstantCommand(m_shooter::shootBall, m_shooter));
+    new JoystickButton(m_operatorController, XboxController.Button.kB.value)
+            .whenPressed(new InstantCommand(m_shooter::StopMotors, m_shooter));      
   }
 
 
