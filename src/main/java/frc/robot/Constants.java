@@ -9,6 +9,7 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.wpilibj.util.Units;
 
 public final class Constants {
     public static final class DriveConstants {
@@ -21,8 +22,7 @@ public final class Constants {
         public static final int[] kRightEncoderPorts = new int[]{2, 3};
         public static final boolean kLeftEncoderReversed = false;
         public static final boolean kRightEncoderReversed = true;
-        public static final boolean kGyroReversed = false;
-        public static final double kTrackwidthMeters = 0.69;
+        public static final double kTrackwidthMeters = Units.inchesToMeters(27);
         public static final DifferentialDriveKinematics kDriveKinematics =
                 new DifferentialDriveKinematics(kTrackwidthMeters);
 
@@ -30,18 +30,12 @@ public final class Constants {
         public static final double kWheelDiameterInches = 6;
         public static final double kEncoderDistancePerPulse = (kWheelDiameterInches * Math.PI) / (double) kEncoderCPR;
                 // Assumes the encoders are directly mounted on the wheel shafts
+        public static final double ksVolts = 0;
+        public static final double kvVoltSecondsPerMeter = 0;
+        public static final double kaVoltSecondsSquaredPerMeter = 0;
 
-        // These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
-        // These characterization values MUST be determined either experimentally or theoretically
-        // for *your* robot's drive.
-        // The Robot Characterization Toolsuite provides a convenient tool for obtaining these
-        // values for your robot.
-        public static final double ksVolts = 0.22;
-        public static final double kvVoltSecondsPerMeter = 1.98;
-        public static final double kaVoltSecondsSquaredPerMeter = 0.2;
 
-        // Example value only - as above, this must be tuned for your drive!
-        public static final double kPDriveVel = 8.5;
+        public static final double kPDriveVel = 0;
     }
     public static final class BoomerConstants {
         public static final int kLeftMotorPort = 0;
@@ -49,7 +43,6 @@ public final class Constants {
         public static final double kShootingSpeed = 0.7;
     }
     public static final class IntakeConstants {
-        //TODO: get real ports for electronics.
         public static final int kMotorPort = 3;
         public static final int kRightSolenoidPort = 1;
         public static final int kLeftSolenoidPort = 2;

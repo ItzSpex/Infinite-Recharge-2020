@@ -30,6 +30,7 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.Constants.*;
 import frc.robot.subsystems.Intake;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -113,23 +114,12 @@ public class RobotContainer {
                     // Apply the voltage constraint
                     .addConstraint(autoVoltageConstraint);
 
-    // An example trajectory to follow.  All units in meters.
-    Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
-            // Start at the origin facing the +X direction
-            new Pose2d(0, 0, new Rotation2d(0)),
-            // Pass through these two interior waypoints, making an 's' curve path
-            List.of(
-                    new Translation2d(1, 1),
-                    new Translation2d(2, -1)
-            ),
-            // End 3 meters straight ahead of where we started, facing forward
-            new Pose2d(3, 0, new Rotation2d(0)),
-            // Pass config
-            config
-    );
+    //Drive 1m forward
+    Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
+            Arrays.asList(new Pose2d(), new Pose2d(1.0,0, new Rotation2d())),config);
 
     RamseteCommand ramseteCommand = new RamseteCommand(
-            exampleTrajectory,
+            trajectory,
             m_robotDrive::getPose,
             new RamseteController(AutoConstants.kRamseteB, AutoConstants.kRamseteZeta),
             new SimpleMotorFeedforward(DriveConstants.ksVolts,
