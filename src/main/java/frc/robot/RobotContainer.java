@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.controller.PIDController;
@@ -41,9 +42,9 @@ import java.util.List;
  */
 public class RobotContainer {
 
-  private final Drivetrain m_robotDrive = new Drivetrain();
-  private final Boomer m_shooter = new Boomer();
-  private final Intake m_intake = new Intake();
+   public final Drivetrain m_robotDrive = new Drivetrain();
+  //private final Boomer m_shooter = new Boomer();
+  //private final Intake m_intake = new Intake();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -58,19 +59,20 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
+    // Configure default commands
+    // Set the default drive command to split-stick arcade drive
     m_robotDrive.setDefaultCommand(
+            // A split-stick arcade command, with forward/backward controlled by the left
+            // hand, and turning controlled by the right.
             new RunCommand(() -> m_robotDrive
                     .arcadeDrive(m_driverController.getY(GenericHID.Hand.kLeft),
                             m_driverController.getX(GenericHID.Hand.kRight)), m_robotDrive));
 
-    // Add commands to the autonomous command chooser
-
-    //Put the chooser on the dashboard
   }
 
 
   private void configureButtonBindings() {
-    //Shooter Button - Operator Green (A) Button
+   /* //Shooter Button - Operator Green (A) Button
     new JoystickButton(m_operatorController, XboxController.Button.kA.value)
             .whenPressed(new InstantCommand(m_shooter::shootBall, m_shooter))
             .whenReleased(new InstantCommand(m_shooter::StopMotors, m_shooter));
@@ -85,7 +87,7 @@ public class RobotContainer {
             .whenPressed(new InstantCommand(m_intake::StartIntake, m_intake));
     //Stop Intake - Operator Blue (X) Button
     new JoystickButton(m_operatorController,XboxController.Button.kX.value)
-            .whenPressed(new InstantCommand(m_intake::StopIntake, m_intake));
+            .whenPressed(new InstantCommand(m_intake::StopIntake, m_intake));*/
   }
 
 
@@ -114,12 +116,23 @@ public class RobotContainer {
                     // Apply the voltage constraint
                     .addConstraint(autoVoltageConstraint);
 
-    //Drive 1m forward
-    Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
-            Arrays.asList(new Pose2d(), new Pose2d(1.0,0, new Rotation2d())),config);
+    // An example trajectory to follow.  All units in meters.
+    Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
+            // Start at the origin facing the +X direction
+            new Pose2d(0, 0, new Rotation2d(0)),
+            // Pass through these two interior waypoints, making an 's' curve path
+            List.of(
+                    new Translation2d(1, 1),
+                    new Translation2d(2, -1)
+            ),
+            // End 3 meters straight ahead of where we started, facing forward
+            new Pose2d(3, 0, new Rotation2d(0)),
+            // Pass config
+            config
+    );
 
     RamseteCommand ramseteCommand = new RamseteCommand(
-            trajectory,
+            exampleTrajectory,
             m_robotDrive::getPose,
             new RamseteController(AutoConstants.kRamseteB, AutoConstants.kRamseteZeta),
             new SimpleMotorFeedforward(DriveConstants.ksVolts,
