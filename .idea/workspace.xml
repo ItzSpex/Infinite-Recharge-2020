@@ -130,10 +130,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1580330775417">
+    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1580330826323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330775417" />
+    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330826323" />
     <state width="1865" height="267" key="GridCell.Tab.0.bottom" timestamp="1580156169236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -150,9 +150,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580156169236" />
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1580156169221">
+    <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580330838785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580156169221" />
+    <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330838785" />
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1580330850151">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580330850151" />
   </component>
 </project>
