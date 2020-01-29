@@ -26,10 +26,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.Boomer;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.*;
 import frc.robot.Constants.*;
-import frc.robot.subsystems.Intake;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,10 +39,11 @@ import java.util.List;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-
-   public final Drivetrain m_robotDrive = new Drivetrain();
-  //private final Boomer m_shooter = new Boomer();
-  //private final Intake m_intake = new Intake();
+  private final Drivetrain m_robotDrive = new Drivetrain();
+  private final Index m_index = new Index();
+  private final Boomer m_shooter = new Boomer();
+  private final Intake m_intake = new Intake();
+  private final Arm m_arm = new Arm();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -72,6 +71,10 @@ public class RobotContainer {
 
 
   private void configureButtonBindings() {
+    //Index Button - Operator Yellow (Y) Button
+   new JoystickButton(m_operatorController, XboxController.Button.kY.value)
+        .whenPressed(new InstantCommand(m_index::moveBall, m_index))
+        .whenReleased(new InstantCommand(m_index::stopMotor, m_index));
    /* //Shooter Button - Operator Green (A) Button
     new JoystickButton(m_operatorController, XboxController.Button.kA.value)
             .whenPressed(new InstantCommand(m_shooter::shootBall, m_shooter))

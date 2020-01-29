@@ -64,6 +64,14 @@ public final class Constants {
         public static final int kRightSolenoidPort = 2;
         public static final double kIntakeSpeed = 0.7;
     }
+    public static final class IndexConstants {
+        public static final int kMotorPort = 0;
+        public static final double kIndexSpeed = 0.6;
+    }
+    public static final class ArmConstants {
+        public static final int kMotorPort = 4;
+        public static final double kArmSpeed = 0.7;
+    }
     public static final class OIConstants {
         public static final int kDriverControllerPort = 0;
         public static final int kOperatorControllerPort = 1;
