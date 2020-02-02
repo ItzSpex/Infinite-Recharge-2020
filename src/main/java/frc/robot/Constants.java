@@ -54,23 +54,51 @@ public final class Constants {
         public static final double kPDriveVel = 0.557;
     }
     public static final class BoomerConstants {
-        public static final int kLeftMotorPort = 0;
-        public static final int kRightMotorPort = 1;
-        public static final double kShootingSpeed = 0.7;
+        public static final int[] kLeftEncoderPorts = new int[]{4, 5};
+        public static final int[] kRightEncoderPorts = new int[]{6,7};
+        public static final boolean kLeftEncoderReversed = false;
+        public static final boolean kRightEncoderReversed = true;
+        public static final int kEncoderCPR = 2048;
+        public static final double kEncoderDistancePerPulse =
+                1.0 / (double) kEncoderCPR;
+
+        public static final int kLeftMotorPort = 2;
+        public static final int kRightMotorPort = 3;
+
+        public static final double kShooterFreeRPS = 5300;
+        public static final double kShooterTargetRPS = 4000;
+        public static final double kShooterToleranceRPS = 50;
+
+        public static final double kSVolts = 0.05;
+        public static final double kVVoltSecondPerRotation = 12.0/kShooterFreeRPS;
+
+        public static final double kLeftP = 0.0254;
+        public static final double kLeftI = 0;
+        public static final double kLeftD = 0;
+
+        public static final double kRightP = 0.0254;
+        public static final double kRightI = 0;
+        public static final double kRightD = 0;
+
+        public static final double minMotorValue = 0.1;
+        public static final double maxMotorValue = 0.9;
+
     }
     public static final class IntakeConstants {
-        public static final int kMotorPort = 9;
-        public static final int kLeftSolenoidPort = 7;
-        public static final int kRightSolenoidPort = 2;
-        public static final double kIntakeSpeed = 0.7;
+        public static final int kMotorPort = 1;
+        public static final int kLeftSolenoidPort = 0;
+        public static final int kRightSolenoidPort = 1;
+        public static final double kIntakeSpeed = -0.7;
     }
     public static final class IndexConstants {
         public static final int kMotorPort = 0;
         public static final double kIndexSpeed = 0.6;
     }
     public static final class ArmConstants {
-        public static final int kMotorPort = 4;
-        public static final double kArmSpeed = 0.7;
+        public static final int kMotorPort = 0;
+        public static final double kArmUp = -0.3;
+        public static final double kArmDown = 0.2;
+        public static final double kArmStall = -0.1;
     }
     public static final class OIConstants {
         public static final int kDriverControllerPort = 0;

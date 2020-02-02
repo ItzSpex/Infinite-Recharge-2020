@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b9751d-0331-407e-9be1-ff307f6f83bb" name="Default Changelist" comment="Added new subsystems">
-      <change afterPath="$PROJECT_DIR$/.idea/Infinite-Recharge-2020.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="89b9751d-0331-407e-9be1-ff307f6f83bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +56,8 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="git push" />
+      <command value="gradle " />
       <command value="gradle deploy" />
     </option>
   </component>
@@ -72,6 +75,23 @@
           <list>
             <option value="deploy" />
           </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Infinite-Recharge-2020" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
@@ -99,6 +119,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Infinite-Recharge-2020" />
         <item itemvalue="Gradle.Infinite-Recharge-2020 [deploy]" />
         <item itemvalue="Gradle.Test [deploy]" />
       </list>
@@ -127,36 +148,60 @@
       <option name="presentableId" value="Default" />
       <updated>1579973491535</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added new subsystems">
+      <created>1580330827416</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580330827416</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added new subsystems.">
+      <created>1580330920438</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580330920438</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added new subsystems" />
+    <MESSAGE value="Added new subsystems." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new subsystems." />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1580330826323">
+    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser" timestamp="1580625522387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330826323" />
-    <state width="1865" height="267" key="GridCell.Tab.0.bottom" timestamp="1580156169236">
+    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580625522387" />
+    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1580636177295">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580156169236" />
-    <state width="1865" height="267" key="GridCell.Tab.0.center" timestamp="1580156169236">
+    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580636177295" />
+    <state width="1865" height="267" key="GridCell.Tab.0.bottom" timestamp="1580582889445">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580156169236" />
-    <state width="1865" height="267" key="GridCell.Tab.0.left" timestamp="1580156169236">
+    <state width="1865" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580582889445" />
+    <state width="1865" height="267" key="GridCell.Tab.0.center" timestamp="1580582889445">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580156169236" />
-    <state width="1865" height="267" key="GridCell.Tab.0.right" timestamp="1580156169236">
+    <state width="1865" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580582889445" />
+    <state width="1865" height="267" key="GridCell.Tab.0.left" timestamp="1580582889444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580156169236" />
+    <state width="1865" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580582889444" />
+    <state width="1865" height="267" key="GridCell.Tab.0.right" timestamp="1580582889445">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580582889445" />
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580330838785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330838785" />
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1580330850151">
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1580582889419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580330850151" />
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580582889419" />
   </component>
 </project>

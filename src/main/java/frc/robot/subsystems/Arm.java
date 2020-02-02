@@ -7,11 +7,10 @@ import frc.robot.Constants.ArmConstants;
 
 public class Arm extends SubsystemBase {
     private final VictorSPX m_Motor =  new VictorSPX(ArmConstants.kMotorPort);
-
-    public void moveShooter(){
-        m_Motor.set(ControlMode.Velocity, ArmConstants.kArmSpeed);
-    }
+    public void moveShooterDown() {m_Motor.set(ControlMode.PercentOutput,ArmConstants.kArmDown);}
+    public void moveShooterUp(){ m_Motor.set(ControlMode.PercentOutput,ArmConstants.kArmUp);}
+    public void stallShooter() {m_Motor.set(ControlMode.PercentOutput, ArmConstants.kArmStall);}
     public void stopMotor(){
-        m_Motor.set(ControlMode.Disabled, 0);
+        m_Motor.set(ControlMode.PercentOutput, 0);
     }
 }

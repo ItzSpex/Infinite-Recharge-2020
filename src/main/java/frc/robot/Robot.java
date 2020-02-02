@@ -7,9 +7,13 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -21,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
+  private Compressor m_compressor;
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
 
@@ -80,12 +85,14 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     //Points "table" to the NetworkTable database called "chameleon-vision"
     table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("MyCamName");
 
     //Points to the database value named "yaw" and "pitch"
     targetX=table.getEntry("yaw");
     targetY=table.getEntry("pitch");
+    m_compressor = new Compressor(0);
   }
 
   /**
@@ -151,32 +158,32 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    rotationAjust=0;
+   /* rotationAjust=0;
     distanceAjust=0;
     if (m_robotContainer.m_operatorController.getAButtonPressed())//the "A" button
     {
-            /*
+            *//*
                 Fetches the rotation and distance values from the vision co processor
                 sets the value to 0.0 if the value doesnt exist in the database
-            */
+            *//*
       rotationError=targetX.getDouble(0.0);
       distanceError=targetY.getDouble(0.0);
 
-            /*
+            *//*
                 Proportional (to targetX) control loop for rotation
                 Deadzone of angleTolerance
                 Constant power is added to the direction the control loop wants to turn (to overcome friction)
-            */
+            *//*
       if(rotationError>angleTolerance)
         rotationAjust=KpRot*rotationError+constantForce;
       else
       if(rotationError<angleTolerance)
         rotationAjust=KpRot*rotationError-constantForce;
-            /*
+            *//*
                 Proportional (to targetY) control loop for distance
                 Deadzone of distanceTolerance
                 Constant power is added to the direction the control loop wants to turn (to overcome friction)
-            */
+            *//*
       if(distanceError>distanceTolerance)
         distanceAjust=KpDist*distanceError+constantForce;
       else
@@ -186,7 +193,15 @@ public class Robot extends TimedRobot {
 
       //Output the power signals to a arcade drivetrain
       m_robotContainer.m_robotDrive.arcadeDrive(distanceAjust,rotationAjust);
-    }
+    }*/
+    if(m_robotContainer.m_operatorController.getPOV() == 270)
+      m_robotContainer.m_intake.OpenIntake();
+    if(m_robotContainer.m_operatorController.getPOV() == 90)
+      m_robotContainer.m_intake.CloseIntake();
+    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kRight) == 1)
+      m_compressor.stop();
+    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kLeft) == 1)
+      m_compressor.start();
   }
 
   @Override
