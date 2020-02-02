@@ -38,23 +38,26 @@ import java.util.List;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  private final Boomer m_shooter = new Boomer();
+  public static final Boomer m_shooter = new Boomer();
   private final Arm m_arm = new Arm();
   public final Intake m_intake = new Intake();
-  private final Compressor m_compressor = new Compressor(1);
-  /*private final Drivetrain m_robotDrive = new Drivetrain();
-  private final Index m_index = new Index();
-*/
+
+  private final Drivetrain m_robotDrive = new Drivetrain();
+  public static final Index m_index = new Index();
+
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
   XboxController m_operatorController = new XboxController(OIConstants.kOperatorControllerPort);
 
-  private final Command m_shootCommand =
-  new InstantCommand(m_shooter::enable, m_shooter).andThen(
-   new WaitUntilCommand(m_shooter::atSetPoint)
-  ,new InstantCommand(m_intake::TestIntake,m_intake));
+  public static final Command m_shoot =
+  new InstantCommand(m_shooter::useOutput,m_shooter).andThen(
+  new WaitUntilCommand(m_shooter::atSetPoint),
+  new InstantCommand(m_index::moveBall,m_index));
 
+  public static final Command m_stopShooting =
+  new InstantCommand(m_shooter::disable,m_shooter).andThen(
+          new InstantCommand(m_index::stopMotor,m_index));
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -65,42 +68,38 @@ public class RobotContainer {
 
     // Configure default commands
     // Set the default drive command to split-stick arcade drive
-  /*  m_robotDrive.setDefaultCommand(
+    m_robotDrive.setDefaultCommand(
             // A split-stick arcade command, with forward/backward controlled by the left
             // hand, and turning controlled by the right.
             new RunCommand(() -> m_robotDrive
                     .arcadeDrive(m_driverController.getY(GenericHID.Hand.kLeft),
                             m_driverController.getX(GenericHID.Hand.kRight)), m_robotDrive));
-*/
- /* m_arm.setDefaultCommand(
-          new RunCommand(() -> m_arm.moveShooter(m_operatorController.getY(GenericHID.Hand.kLeft)))
-  );*/
   }
 
 
   private void configureButtonBindings() {
-    //Index Button - Operator Yellow (Y) Button
-//   new JoystickButton(m_operatorController, XboxController.Button.kY.value)
-//        .whenPressed(new InstantCommand(m_index::moveBall, m_index))
-//        .whenReleased(new InstantCommand(m_index::stopMotor, m_index));
-   //Shooter Button - Operator Green (A) Button
+   //Index Button - Operator Green (A) Button
     new JoystickButton(m_operatorController, XboxController.Button.kA.value)
-            .whenPressed(m_shootCommand)
-            .whenReleased(new InstantCommand(m_shooter::disable, m_shooter));
+            .whenPressed(new InstantCommand(m_index::moveBall,m_index))
+            .whenReleased(new InstantCommand(m_index::stopMotor,m_index));
     //Start Intake - Operator Red (B) Button
     new JoystickButton(m_operatorController,XboxController.Button.kB.value)
             .whenPressed(new InstantCommand(m_intake::StartIntake, m_intake));
     //Stop Intake - Operator Blue (X) Button
     new JoystickButton(m_operatorController,XboxController.Button.kX.value)
             .whenPressed(new InstantCommand(m_intake::StopIntake, m_intake));
+    //Stop Shooter Stall - Operator Yellow (Y) Button
+    new JoystickButton(m_operatorController, XboxController.Button.kY.value)
+            .whenPressed(new InstantCommand(m_arm::stopMotor,m_arm));
+    //Control Shooter Down - Operator LB Button
    new JoystickButton(m_operatorController, XboxController.Button.kBumperLeft.value)
            .whenPressed(new InstantCommand(m_arm::moveShooterDown, m_arm))
            .whenReleased(new InstantCommand(m_arm::stallShooter,m_arm));
+   //Control Shooter Up - Operator RB Button
    new JoystickButton(m_operatorController, XboxController.Button.kBumperRight.value)
            .whenPressed(new InstantCommand(m_arm::moveShooterUp, m_arm))
            .whenReleased(new InstantCommand(m_arm::stallShooter, m_arm));
-   new JoystickButton(m_operatorController, XboxController.Button.kY.value)
-           .whenPressed(new InstantCommand(m_arm::stopMotor,m_arm));
+
   }
 
 

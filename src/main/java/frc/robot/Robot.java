@@ -85,6 +85,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    //m_compressor = new Compressor(Constants.kPCMPort);
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     //Points "table" to the NetworkTable database called "chameleon-vision"
     table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("MyCamName");
@@ -92,7 +93,6 @@ public class Robot extends TimedRobot {
     //Points to the database value named "yaw" and "pitch"
     targetX=table.getEntry("yaw");
     targetY=table.getEntry("pitch");
-    m_compressor = new Compressor(0);
   }
 
   /**
@@ -194,14 +194,24 @@ public class Robot extends TimedRobot {
       //Output the power signals to a arcade drivetrain
       m_robotContainer.m_robotDrive.arcadeDrive(distanceAjust,rotationAjust);
     }*/
+    //Open Intake - Operator Left Arrow Button
     if(m_robotContainer.m_operatorController.getPOV() == 270)
       m_robotContainer.m_intake.OpenIntake();
+    //Close Intake - Operator Right Arrow Button
     if(m_robotContainer.m_operatorController.getPOV() == 90)
       m_robotContainer.m_intake.CloseIntake();
-    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kRight) == 1)
+    //Close Compressor - Operator Up Arrow Button
+    if(m_robotContainer.m_operatorController.getPOV() == 0)
       m_compressor.stop();
-    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kLeft) == 1)
+    //Start Compressor - Operator Down Arrow Button
+    if(m_robotContainer.m_operatorController.getPOV() == 360)
       m_compressor.start();
+    //Start Shooter - Operator RT Button
+    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kRight) == 1)
+      RobotContainer.m_shoot.execute();
+    //Stop Shooter - Operator LT Button
+    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kLeft) == 1)
+      RobotContainer.m_stopShooting.execute();
   }
 
   @Override

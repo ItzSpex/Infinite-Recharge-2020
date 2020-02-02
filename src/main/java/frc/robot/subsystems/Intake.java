@@ -9,29 +9,24 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
 public class Intake extends SubsystemBase {
-    private final VictorSPX m_Motor =
-            new VictorSPX(IntakeConstants.kMotorPort);
-    private final DoubleSolenoid m_leftSolenoid =
+    private final SpeedController m_Motor =
+            new WPI_TalonSRX(IntakeConstants.kMotorPort);
+    private final DoubleSolenoid m_Solenoid =
             new DoubleSolenoid(1,IntakeConstants.kLeftSolenoidPort);
-    /*private final DoubleSolenoid m_rightSolenoid =
-            new DoubleSolenoid(1,IntakeConstants.kRightSolenoidPort);*/
     public void OpenIntake()
     {
-        m_leftSolenoid.set(DoubleSolenoid.Value.kForward);
-        //m_rightSolenoid.set(DoubleSolenoid.Value.kForward);
+        m_Solenoid.set(DoubleSolenoid.Value.kForward);
     }
     public void CloseIntake()
     {
-        m_leftSolenoid.set(DoubleSolenoid.Value.kReverse);
-        //m_rightSolenoid.set(DoubleSolenoid.Value.kReverse);
+        m_Solenoid.set(DoubleSolenoid.Value.kReverse);
     }
     public void StartIntake()
     {
-        m_Motor.set(ControlMode.PercentOutput,IntakeConstants.kIntakeSpeed);
+        m_Motor.set(IntakeConstants.kIntakeSpeed);
     }
     public void StopIntake()
     {
-        m_Motor.set(ControlMode.PercentOutput,0);
+        m_Motor.stopMotor();
     }
-    public void TestIntake() {m_Motor.set(ControlMode.PercentOutput, 0.1);}
 }

@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    //TODO: change PCM port.
+    public static final int kPCMPort = 0;
     public static final class DriveConstants {
         public static final int kLeftMotor1Port = 0;
         public static final int kLeftMotor2Port = 1;
@@ -69,7 +71,8 @@ public final class Constants {
         public static final double kShooterTargetRPS = 4000;
         public static final double kShooterToleranceRPS = 50;
 
-        public static final double kSVolts = 0.05;
+        public static final double kShooterSpeed = 0.9;
+        public static final double kSVolts = 1.5;
         public static final double kVVoltSecondPerRotation = 12.0/kShooterFreeRPS;
 
         public static final double kLeftP = 0.0254;
