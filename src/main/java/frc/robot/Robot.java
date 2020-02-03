@@ -15,6 +15,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -85,8 +86,10 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
     //m_compressor = new Compressor(Constants.kPCMPort);
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+
     //Points "table" to the NetworkTable database called "chameleon-vision"
     table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("MyCamName");
 
@@ -109,6 +112,8 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    SmartDashboard.putNumber("Left Shooter Speed", m_robotContainer.m_shooter.getLeftSpeed());
+    SmartDashboard.putNumber("Right Shooter Speed",m_robotContainer.m_shooter.getRightSpeed());
   }
 
   /**

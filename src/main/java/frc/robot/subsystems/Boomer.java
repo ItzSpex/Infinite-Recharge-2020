@@ -63,5 +63,10 @@ public class Boomer extends SubsystemBase {
         m_leftController.enableContinuousInput(BoomerConstants.minMotorValue,BoomerConstants.maxMotorValue);
         m_rightController.enableContinuousInput(BoomerConstants.minMotorValue,BoomerConstants.maxMotorValue);
     }
-
+    public double getLeftSpeed(){
+        return m_leftMotor.get();
+    }
+    public double getRightSpeed(){
+        return m_rightMotor.get();
+    }
 }

@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="89b9751d-0331-407e-9be1-ff307f6f83bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +53,8 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle " />
-      <command value="git push" />
       <command value="gradle deploy" />
+      <command value="git push" />
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Infinite-Recharge-2020 [deploy]">
@@ -171,47 +165,55 @@
       <option name="project" value="LOCAL" />
       <updated>1580636254203</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Code Cleanup.">
+      <created>1580661166485</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580661166485</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added new subsystems" />
     <MESSAGE value="Added new subsystems." />
     <MESSAGE value="Added new code for testing - new Shooter PID subsystem and commenting out subsystems for the sake of testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new code for testing - new Shooter PID subsystem and commenting out subsystems for the sake of testing." />
+    <MESSAGE value="Code Cleanup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Cleanup." />
   </component>
   <component name="WindowStateProjectService">
     <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser" timestamp="1580625522387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580625522387" />
-    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1580636253155">
+    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1580661165412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580636253155" />
-    <state width="1865" height="267" key="GridCell.Tab.0.bottom" timestamp="1580644924147">
+    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580661165412" />
+    <state width="1865" height="267" key="GridCell.Tab.0.bottom" timestamp="1580663481176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580644924147" />
-    <state width="1865" height="267" key="GridCell.Tab.0.center" timestamp="1580644924147">
+    <state width="1865" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580663481176" />
+    <state width="1865" height="267" key="GridCell.Tab.0.center" timestamp="1580663481176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580644924147" />
-    <state width="1865" height="267" key="GridCell.Tab.0.left" timestamp="1580644924147">
+    <state width="1865" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580663481176" />
+    <state width="1865" height="267" key="GridCell.Tab.0.left" timestamp="1580663481176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580644924147" />
-    <state width="1865" height="267" key="GridCell.Tab.0.right" timestamp="1580644924147">
+    <state width="1865" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580663481176" />
+    <state width="1865" height="267" key="GridCell.Tab.0.right" timestamp="1580663481176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580644924147" />
+    <state width="1865" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580663481176" />
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580330838785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330838785" />
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1580644924134">
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1580661171601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580644924134" />
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580661171601" />
   </component>
 </project>
