@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 public final class Constants {
     //TODO: change PCM port.
     public static final int kPCMPort = 0;
+
     public static final class DriveConstants {
         public static final int kLeftMotor1Port = 0;
         public static final int kLeftMotor2Port = 1;
@@ -102,6 +103,17 @@ public final class Constants {
         public static final double kArmUp = -0.3;
         public static final double kArmDown = 0.2;
         public static final double kArmStall = -0.1;
+
+        public static final int kPotPort = 0;
+        //Bottom, Middle and Top Arm setpoints
+        public static final double kSetPoint = 2.6;
+
+        public static final double kP = 5.0;
+        public static final double kI = 0.02;
+        public static final double kD = 2.0;
+
+        public static final int kMinValue = 0;
+        public static final int kMaxValue = 5;
     }
     public static final class OIConstants {
         public static final int kDriverControllerPort = 0;

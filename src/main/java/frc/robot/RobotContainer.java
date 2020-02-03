@@ -39,7 +39,7 @@ import java.util.List;
  */
 public class RobotContainer {
   public static final Boomer m_shooter = new Boomer();
-  private final Arm m_arm = new Arm();
+  private static final Arm m_arm = new Arm();
   public final Intake m_intake = new Intake();
 
   private final Drivetrain m_robotDrive = new Drivetrain();
@@ -51,13 +51,16 @@ public class RobotContainer {
   XboxController m_operatorController = new XboxController(OIConstants.kOperatorControllerPort);
 
   public static final Command m_shoot =
+  new InstantCommand(m_arm::moveShooterPID,m_arm).andThen(
+  new WaitUntilCommand(m_arm::atSetPoint),
   new InstantCommand(m_shooter::useOutput,m_shooter).andThen(
   new WaitUntilCommand(m_shooter::atSetPoint),
-  new InstantCommand(m_index::moveBall,m_index));
+  new InstantCommand(m_index::moveBall,m_index)));
 
   public static final Command m_stopShooting =
+  new InstantCommand(m_arm::stopMotor).andThen(
   new InstantCommand(m_shooter::disable,m_shooter).andThen(
-          new InstantCommand(m_index::stopMotor,m_index));
+          new InstantCommand(m_index::stopMotor,m_index)));
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
