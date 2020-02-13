@@ -57,6 +57,8 @@ public class Drivetrain extends SubsystemBase {
         // Sets the distance per pulse for the encoders
         m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
         m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
+        m_leftMotors.setInverted(true);
+        m_rightMotors.setInverted(true);
 
         resetEncoders();
         m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(getHeading()));
@@ -104,7 +106,7 @@ public class Drivetrain extends SubsystemBase {
      * @param rot the commanded rotation
      */
     public void arcadeDrive(double fwd, double rot) {
-        m_drive.arcadeDrive(fwd, rot);
+        m_drive.arcadeDrive(fwd, -rot);
     }
 
     /**

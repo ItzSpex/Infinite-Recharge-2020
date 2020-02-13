@@ -15,9 +15,13 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+import static frc.robot.RobotContainer.m_index;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,54 +33,13 @@ public class Robot extends TimedRobot {
   private Compressor m_compressor;
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
-
-
-  /*
-   NetworkTable is a collection of databases stored in the RoboRIO
-   The co processor can change data inside it
-   This database can be viewed in a program named OutlineViewer
-   "table" represents a single database called "MyCamName" under "Chameleon Vision`"
-   */
-  NetworkTable table;
-
-  /*
-  targetX represents the horizontal angle
-  targetY represents the vertical angle
-  */
-  NetworkTableEntry targetX;
-  NetworkTableEntry targetY;
-
-
-
-  //Error values for the control loop
-  double rotationError;
-  double distanceError;
-
-  //Control loop constants
-    /*
-        This example uses proportional control loop with constant force
-        After you master proportional control use might want to try PID control loop
-    */
-  double KpRot=-0.1;
-  double KpDist=-0.1;
-
-  //Deadzone is necessary because the robot can only get so accurate and cannot be pefectly head on the target
-  double angleTolerance=5;//Deadzone for the angle control loop
-  double distanceTolerance=5;//Deadzone for the distance control loop
-
-  /*
-  There is a minimum power that you need to give to the drivetrain in order to overcome friction
-  It helps the robot move and rotate at low speeds
-  */
-  double constantForce=0.05;
-
-  /*
-  rotationAjust is rotational signal for the drivetrain
-  distanceAjust is forward signal for the drivetrain
-  */
-  double rotationAjust;
-  double distanceAjust;
-
+  public NetworkTableEntry yaw;
+  public NetworkTableEntry pitch;
+  public NetworkTableEntry isDriverMode;
+  public NetworkTableInstance table;
+  public NetworkTable cameraTable;
+  public static double currPitch;
+  private boolean isUpPressed = false;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -87,15 +50,17 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    //m_compressor = new Compressor(Constants.kPCMPort);
-    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    m_compressor = new Compressor(Constants.kPCMPort);
 
-    //Points "table" to the NetworkTable database called "chameleon-vision"
-    table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("MyCamName");
 
-    //Points to the database value named "yaw" and "pitch"
-    targetX=table.getEntry("yaw");
-    targetY=table.getEntry("pitch");
+   table = NetworkTableInstance.getDefault();
+
+   cameraTable = table.getTable("chameleon-vision").getSubTable("LifeCam");
+
+    yaw = cameraTable.getEntry("targetYaw");
+    pitch = cameraTable.getEntry("targetPitch");
+
+    isDriverMode = cameraTable.getEntry("driver-mode");
   }
 
   /**
@@ -112,8 +77,6 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    SmartDashboard.putNumber("Left Shooter Speed", m_robotContainer.m_shooter.getLeftSpeed());
-    SmartDashboard.putNumber("Right Shooter Speed",m_robotContainer.m_shooter.getRightSpeed());
   }
 
   /**
@@ -163,60 +126,32 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-   /* rotationAjust=0;
-    distanceAjust=0;
-    if (m_robotContainer.m_operatorController.getAButtonPressed())//the "A" button
-    {
-            *//*
-                Fetches the rotation and distance values from the vision co processor
-                sets the value to 0.0 if the value doesnt exist in the database
-            *//*
-      rotationError=targetX.getDouble(0.0);
-      distanceError=targetY.getDouble(0.0);
-
-            *//*
-                Proportional (to targetX) control loop for rotation
-                Deadzone of angleTolerance
-                Constant power is added to the direction the control loop wants to turn (to overcome friction)
-            *//*
-      if(rotationError>angleTolerance)
-        rotationAjust=KpRot*rotationError+constantForce;
-      else
-      if(rotationError<angleTolerance)
-        rotationAjust=KpRot*rotationError-constantForce;
-            *//*
-                Proportional (to targetY) control loop for distance
-                Deadzone of distanceTolerance
-                Constant power is added to the direction the control loop wants to turn (to overcome friction)
-            *//*
-      if(distanceError>distanceTolerance)
-        distanceAjust=KpDist*distanceError+constantForce;
-      else
-      if(distanceError<distanceTolerance)
-        distanceAjust=KpDist*distanceError-constantForce;
-
-
-      //Output the power signals to a arcade drivetrain
-      m_robotContainer.m_robotDrive.arcadeDrive(distanceAjust,rotationAjust);
-    }*/
+    currPitch = pitch.getDouble(0.0);
     //Open Intake - Operator Left Arrow Button
     if(m_robotContainer.m_operatorController.getPOV() == 270)
       m_robotContainer.m_intake.OpenIntake();
     //Close Intake - Operator Right Arrow Button
     if(m_robotContainer.m_operatorController.getPOV() == 90)
       m_robotContainer.m_intake.CloseIntake();
-    //Close Compressor - Operator Up Arrow Button
-    if(m_robotContainer.m_operatorController.getPOV() == 0)
+    //Stop Compressor - Operator Right Stick Button
+   if(m_robotContainer.m_operatorController.getPOV() == 0 && (!isUpPressed))
+   {
+     m_index.moveBallOut();
+     isUpPressed = true;
+   }
+   else
+     m_index.stopMotor();
+
+    if(m_robotContainer.m_operatorController.getStickButtonPressed(GenericHID.Hand.kRight))
       m_compressor.stop();
-    //Start Compressor - Operator Down Arrow Button
-    if(m_robotContainer.m_operatorController.getPOV() == 360)
+    //Start Compressor - Operator Left Stick Button
+    if(m_robotContainer.m_operatorController.getStickButtonPressed(GenericHID.Hand.kLeft))
       m_compressor.start();
-    //Start Shooter - Operator RT Button
-    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kRight) == 1)
-      RobotContainer.m_shoot.execute();
-    //Stop Shooter - Operator LT Button
-    if(m_robotContainer.m_operatorController.getTriggerAxis(GenericHID.Hand.kLeft) == 1)
-      RobotContainer.m_stopShooting.execute();
+
+
+
+    isDriverMode.setBoolean(m_robotContainer.m_driverController.getAButtonPressed());
+
   }
 
   @Override

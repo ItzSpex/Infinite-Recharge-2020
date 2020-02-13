@@ -39,7 +39,7 @@ import java.util.List;
  */
 public class RobotContainer {
   public static final Boomer m_shooter = new Boomer();
-  private static final Arm m_arm = new Arm();
+  public static final Arm m_arm = new Arm();
   public final Intake m_intake = new Intake();
 
   private final Drivetrain m_robotDrive = new Drivetrain();
@@ -51,16 +51,16 @@ public class RobotContainer {
   XboxController m_operatorController = new XboxController(OIConstants.kOperatorControllerPort);
 
   public static final Command m_shoot =
-  new InstantCommand(m_arm::moveShooterPID,m_arm).andThen(
-  new WaitUntilCommand(m_arm::atSetPoint),
+    //new InstantCommand(m_arm::moveShooterPID,m_arm).andThen(
+    //new WaitUntilCommand(m_arm::atSetPoint),
   new InstantCommand(m_shooter::useOutput,m_shooter).andThen(
   new WaitUntilCommand(m_shooter::atSetPoint),
-  new InstantCommand(m_index::moveBall,m_index)));
+  new InstantCommand(m_index::moveBallIn,m_index));
 
   public static final Command m_stopShooting =
-  new InstantCommand(m_arm::stopMotor).andThen(
+  //new InstantCommand(m_arm::stopMotor).andThen(
   new InstantCommand(m_shooter::disable,m_shooter).andThen(
-          new InstantCommand(m_index::stopMotor,m_index)));
+          new InstantCommand(m_index::stopMotor,m_index));
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -81,28 +81,29 @@ public class RobotContainer {
 
 
   private void configureButtonBindings() {
-   //Index Button - Operator Green (A) Button
+   //Shooting Button - Operator Green (A) Button
     new JoystickButton(m_operatorController, XboxController.Button.kA.value)
-            .whenPressed(new InstantCommand(m_index::moveBall,m_index))
-            .whenReleased(new InstantCommand(m_index::stopMotor,m_index));
-    //Start Intake - Operator Red (B) Button
+            .whenPressed(m_shoot)
+            .whenReleased(m_stopShooting);
+    //Intake - Operator Red (B) Button
     new JoystickButton(m_operatorController,XboxController.Button.kB.value)
-            .whenPressed(new InstantCommand(m_intake::StartIntake, m_intake));
-    //Stop Intake - Operator Blue (X) Button
+            .whenPressed(new InstantCommand(m_intake::StartIntake, m_intake))
+            .whenReleased(new InstantCommand(m_intake::StopIntake, m_intake));
+    //Index - Operator Blue (X) Button
     new JoystickButton(m_operatorController,XboxController.Button.kX.value)
-            .whenPressed(new InstantCommand(m_intake::StopIntake, m_intake));
+            .whenPressed(new InstantCommand(m_index::moveBallIn, m_index))
+            .whenReleased(new InstantCommand(m_index::stopMotor,m_index));
     //Stop Shooter Stall - Operator Yellow (Y) Button
     new JoystickButton(m_operatorController, XboxController.Button.kY.value)
             .whenPressed(new InstantCommand(m_arm::stopMotor,m_arm));
     //Control Shooter Down - Operator LB Button
    new JoystickButton(m_operatorController, XboxController.Button.kBumperLeft.value)
-           .whenPressed(new InstantCommand(m_arm::moveShooterDown, m_arm))
-           .whenReleased(new InstantCommand(m_arm::stallShooter,m_arm));
+           .whenPressed(new InstantCommand(m_arm::moveShooterDown, m_arm));
+           //.whenReleased(new InstantCommand(m_arm::stallShooter,m_arm));
    //Control Shooter Up - Operator RB Button
    new JoystickButton(m_operatorController, XboxController.Button.kBumperRight.value)
            .whenPressed(new InstantCommand(m_arm::moveShooterUp, m_arm))
            .whenReleased(new InstantCommand(m_arm::stallShooter, m_arm));
-
   }
 
 

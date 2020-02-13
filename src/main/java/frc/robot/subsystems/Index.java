@@ -18,9 +18,10 @@ import frc.robot.Constants.IndexConstants;
 public class Index extends SubsystemBase {
   private final SpeedController m_Motor =  new WPI_TalonSRX(IndexConstants.kMotorPort);
 
-  public void moveBall(){
+  public void moveBallIn(){
     m_Motor.set(IndexConstants.kIndexSpeed);
   }
+  public void moveBallOut(){m_Motor.set(-IndexConstants.kIndexSpeed); }
   public void stopMotor(){
     m_Motor.stopMotor();
   }

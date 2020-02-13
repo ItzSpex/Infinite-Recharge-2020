@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -12,7 +10,7 @@ public class Intake extends SubsystemBase {
     private final SpeedController m_Motor =
             new WPI_TalonSRX(IntakeConstants.kMotorPort);
     private final DoubleSolenoid m_Solenoid =
-            new DoubleSolenoid(1,IntakeConstants.kLeftSolenoidPort);
+            new DoubleSolenoid(1,IntakeConstants.kSolenoidPort);
     public void OpenIntake()
     {
         m_Solenoid.set(DoubleSolenoid.Value.kForward);
