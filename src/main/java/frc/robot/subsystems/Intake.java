@@ -5,26 +5,32 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.spikes.command.genericsubsystem.GenericSubsystem;
 
-public class Intake extends SubsystemBase {
+public class Intake extends GenericSubsystem {
     private final SpeedController m_Motor =
             new WPI_TalonSRX(IntakeConstants.kMotorPort);
     private final DoubleSolenoid m_Solenoid =
-            new DoubleSolenoid(1,IntakeConstants.kSolenoidPort);
-    public void OpenIntake()
-    {
+            new DoubleSolenoid(IntakeConstants.kSolenoidPortForward,IntakeConstants.kSolenoidPortBackward);
+    public void OpenIntake(){
         m_Solenoid.set(DoubleSolenoid.Value.kForward);
     }
-    public void CloseIntake()
-    {
+    public void CloseIntake(){
         m_Solenoid.set(DoubleSolenoid.Value.kReverse);
     }
-    public void StartIntake()
-    {
-        m_Motor.set(IntakeConstants.kIntakeSpeed);
+
+    @Override
+    public void apply(double speed) {
+        m_Motor.set(speed);
     }
-    public void StopIntake()
-    {
+
+    @Override
+    public boolean canMove(double speed) {
+        return true;
+    }
+
+    @Override
+    public void stop() {
         m_Motor.stopMotor();
     }
 }

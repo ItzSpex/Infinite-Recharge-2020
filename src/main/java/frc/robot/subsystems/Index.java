@@ -7,22 +7,37 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IndexConstants;
+import frc.robot.spikes.command.genericsubsystem.GenericSubsystem;
 
-public class Index extends SubsystemBase {
-  private final SpeedController m_Motor =  new WPI_TalonSRX(IndexConstants.kMotorPort);
+public class Index extends GenericSubsystem {
+  private final WPI_TalonSRX m_Motor = new WPI_TalonSRX(IndexConstants.kMotorPort);
 
-  public void moveBallIn(){
-    m_Motor.set(IndexConstants.kIndexSpeed);
+  public Index() {
+    m_Motor.setInverted(true);
   }
-  public void moveBallOut(){m_Motor.set(-IndexConstants.kIndexSpeed); }
-  public void stopMotor(){
+
+  @Override
+  public void apply(double speed) {
+    m_Motor.set(speed);
+  }
+
+  @Override
+  public boolean canMove(double speed) {
+    return true;
+  }
+
+  @Override
+  public void stop() {
     m_Motor.stopMotor();
   }
+
+  public void moveInBall(){
+    m_Motor.set(IndexConstants.kIndexSpeed);
+  }
+
+  public void moveOutBall() {m_Motor.set(-IndexConstants.kIndexSpeed);}
+
 }

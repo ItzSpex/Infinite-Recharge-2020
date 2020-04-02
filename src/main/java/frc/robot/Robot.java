@@ -19,9 +19,13 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Constants.VisionConstants;
 
-import static frc.robot.RobotContainer.m_index;
+import static frc.robot.RobotContainer.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -30,7 +34,7 @@ import static frc.robot.RobotContainer.m_index;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Compressor m_compressor;
+  public static Compressor m_compressor;
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
   public NetworkTableEntry yaw;
@@ -38,8 +42,15 @@ public class Robot extends TimedRobot {
   public NetworkTableEntry isDriverMode;
   public NetworkTableInstance table;
   public NetworkTable cameraTable;
+  JoystickButton driverMode;
+  JoystickButton aimToTarget;
+  Button armPointA;
+  Button armPointB;
+  Button armPointC;
+  Button stopCompressor;
+  Button startCompressor;
   public static double currPitch;
-  private boolean isUpPressed = false;
+  double rotationError = 0, toTurn = 0;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -48,19 +59,22 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    m_compressor = new Compressor(Constants.kPCMPort);
+    m_compressor.stop();
     m_robotContainer = new RobotContainer();
 
-    m_compressor = new Compressor(Constants.kPCMPort);
 
 
-   table = NetworkTableInstance.getDefault();
+
+    table = NetworkTableInstance.getDefault();
 
    cameraTable = table.getTable("chameleon-vision").getSubTable("LifeCam");
 
     yaw = cameraTable.getEntry("targetYaw");
     pitch = cameraTable.getEntry("targetPitch");
 
-    isDriverMode = cameraTable.getEntry("driver-mode");
+    isDriverMode = cameraTable.getEntry("driverMode");
   }
 
   /**
@@ -119,6 +133,10 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+     driverMode = driver.getGreenButton();
+     aimToTarget = driver.getRedButton();
+     startCompressor = operator.getLeftStickButton();
+     stopCompressor = operator.getRightStickButton();
   }
 
   /**
@@ -126,33 +144,41 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    currPitch = pitch.getDouble(0.0);
-    //Open Intake - Operator Left Arrow Button
-    if(m_robotContainer.m_operatorController.getPOV() == 270)
-      m_robotContainer.m_intake.OpenIntake();
-    //Close Intake - Operator Right Arrow Button
-    if(m_robotContainer.m_operatorController.getPOV() == 90)
-      m_robotContainer.m_intake.CloseIntake();
-    //Stop Compressor - Operator Right Stick Button
-   if(m_robotContainer.m_operatorController.getPOV() == 0 && (!isUpPressed))
-   {
-     m_index.moveBallOut();
-     isUpPressed = true;
-   }
-   else
-     m_index.stopMotor();
+    toTurn = 0;
+    if(driverMode.get())
+    {
+      isDriverMode.setBoolean(true);
+    }
+    else
+    {
+      isDriverMode.setBoolean(false);
+    }
 
-    if(m_robotContainer.m_operatorController.getStickButtonPressed(GenericHID.Hand.kRight))
-      m_compressor.stop();
-    //Start Compressor - Operator Left Stick Button
-    if(m_robotContainer.m_operatorController.getStickButtonPressed(GenericHID.Hand.kLeft))
+    if(aimToTarget.get())
+    {
+      rotationError = yaw.getDouble(0.0);
+      System.out.println("rotation Error: " + rotationError);
+      if(rotationError > VisionConstants.kAngleTolerance)
+      {
+        toTurn = VisionConstants.kPRot * rotationError + VisionConstants.kConstantForce;
+      }
+      else if (rotationError < VisionConstants.kAngleTolerance)
+      {
+        toTurn = VisionConstants.kPRot * rotationError + VisionConstants.kConstantForce;
+      }
+      m_robotDrive.arcadeDrive(0.05,toTurn);
+    }
+    if(startCompressor.get())
       m_compressor.start();
-
-
-
-    isDriverMode.setBoolean(m_robotContainer.m_driverController.getAButtonPressed());
-
+    if(stopCompressor.get())
+      m_compressor.stop();
+    if(operator.getRTAxis() > 0)
+      m_climber.Eject();
+    if(operator.getLTAxis() > 0)
+      m_climber.Dejecet();
   }
+
+
 
   @Override
   public void testInit() {

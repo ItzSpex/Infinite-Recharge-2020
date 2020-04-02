@@ -17,7 +17,9 @@ import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.RobotContainer;
 
 
 public class Drivetrain extends SubsystemBase {
@@ -59,7 +61,7 @@ public class Drivetrain extends SubsystemBase {
         m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
         m_leftMotors.setInverted(true);
         m_rightMotors.setInverted(true);
-
+        m_drive.setSafetyEnabled(false);
         resetEncoders();
         m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(getHeading()));
     }
@@ -186,7 +188,19 @@ public class Drivetrain extends SubsystemBase {
      *
      * @return The turn rate of the robot, in degrees per second
      */
-    public double getTurnRate() {
+    public double getTurnRate()
+    {
         return m_gyro.getRate() * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
+    }
+    public void moveUsingJoystick()
+    {
+        arcadeDrive(RobotContainer.driver.getLeftY(),RobotContainer.driver.getRightX());
+    }
+    public void moveAuto() {
+        arcadeDrive(Constants.AutoConstants.kBackwardspeed,Constants.AutoConstants.kTurnSpeed);
+    }
+    public void stopMotors() {
+        m_rightMotors.disable();
+        m_leftMotors.disable();
     }
 }

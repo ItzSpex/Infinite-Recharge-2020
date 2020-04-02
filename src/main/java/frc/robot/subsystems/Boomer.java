@@ -46,6 +46,8 @@ public class Boomer extends SubsystemBase {
         enable();
         m_leftMotor.set(getMeasurement() + m_Feedforward.calculate(BoomerConstants.kShooterSpeed));
         m_rightMotor.set(-(getMeasurement() + m_Feedforward.calculate(BoomerConstants.kShooterSpeed)));
+        //m_rightMotor.set(BoomerConstants.kShooterSpeed);
+        //m_leftMotor.set(BoomerConstants.kShooterSpeed);
     }
     public double getMeasurement() {
         return (m_leftEncoder.getRate() + m_rightEncoder.getRate())/2.0;

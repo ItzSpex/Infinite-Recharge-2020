@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89b9751d-0331-407e-9be1-ff307f6f83bb" name="Default Changelist" comment="Full Update V2.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/AimAndShoot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/Auton4MTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/AutonTraj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/CrossLineTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/SetWristSetpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/StopAimAndShooter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Climber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Wrist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Index.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" afterDir="false" />
@@ -18,6 +30,9 @@
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/SpikesLib2">
       <ProjectState />
     </projectState>
   </component>
@@ -53,16 +68,87 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Documents\Ofek's Folder\Athena 5747\Infinite-Recharge-2020\src\main\java\frc\robot" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="git push" />
       <command value="gradle " />
+      <command value="gradle PathWeaver" />
+      <command value="gradle InstallAllTools" />
+      <command value="gradle buildDependents" />
+      <command value="gradle init" />
+      <command value="gradle build" />
       <command value="gradle deploy" />
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Infinite-Recharge-2020 [deploy]">
+    <configuration name="Infinite-Recharge-2020 [InstallAllTools]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="InstallAllTools" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Infinite-Recharge-2020 [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Infinite-Recharge-2020 [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Infinite-Recharge-2020 [deploy]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -82,24 +168,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Infinite-Recharge-2020" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test [deploy]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Infinite-Recharge-2020 [init]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -110,7 +179,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="deploy" />
+            <option value="init" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -120,9 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Infinite-Recharge-2020" />
         <item itemvalue="Gradle.Infinite-Recharge-2020 [deploy]" />
-        <item itemvalue="Gradle.Test [deploy]" />
+        <item itemvalue="Gradle.Infinite-Recharge-2020 [init]" />
+        <item itemvalue="Gradle.Infinite-Recharge-2020 [buildDependents]" />
+        <item itemvalue="Gradle.Infinite-Recharge-2020 [dependencies]" />
+        <item itemvalue="Gradle.Infinite-Recharge-2020 [InstallAllTools]" />
       </list>
     </recent_temporary>
   </component>
@@ -218,10 +289,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="Full Update V2." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser" timestamp="1580625522387">
+    <state x="452" y="94" key="#Notifications" timestamp="1581893078848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580625522387" />
+    <state x="452" y="94" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1581893078848" />
+    <state x="452" y="95" key="#Updates" timestamp="1582966249377">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="452" y="95" key="#Updates/0.0.1920.1040@0.0.1920.1040" timestamp="1582966249377" />
+    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser" timestamp="1582373508873">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1582373508873" />
+    <state x="732" y="429" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1582007242527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="732" y="429" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582007242527" />
     <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1581631647071">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -230,29 +313,49 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="92" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581631619991" />
-    <state width="1865" height="267" key="GridCell.Tab.0.bottom" timestamp="1581503409992">
+    <state x="690" y="155" key="FileChooserDialogImpl" timestamp="1583402951976">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581503409992" />
-    <state width="1865" height="267" key="GridCell.Tab.0.center" timestamp="1581503409992">
+    <state x="690" y="155" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583402951976" />
+    <state width="1865" height="266" key="GridCell.Tab.0.bottom" timestamp="1583954214602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581503409992" />
-    <state width="1865" height="267" key="GridCell.Tab.0.left" timestamp="1581503409991">
+    <state width="1865" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583954214602" />
+    <state width="1865" height="266" key="GridCell.Tab.0.center" timestamp="1583954214602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581503409991" />
-    <state width="1865" height="267" key="GridCell.Tab.0.right" timestamp="1581503409992">
+    <state width="1865" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583954214602" />
+    <state width="1865" height="266" key="GridCell.Tab.0.left" timestamp="1583954214602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581503409992" />
+    <state width="1865" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583954214602" />
+    <state width="1865" height="266" key="GridCell.Tab.0.right" timestamp="1583954214602">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583954214602" />
+    <state x="539" y="145" key="NewModule_or_Project.wizard" timestamp="1582007087063">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="145" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1582007087063" />
+    <state x="337" y="0" key="SettingsEditor" timestamp="1582966023443">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="337" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582966023443" />
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580330838785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580330838785" />
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1581506881446">
+    <state x="230" y="7" key="new project wizard" timestamp="1582007069801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581506881446" />
+    <state x="230" y="7" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1582007069801" />
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1583954214582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583954214582" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1582362938277">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582362938277" />
   </component>
 </project>
