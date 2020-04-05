@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b9751d-0331-407e-9be1-ff307f6f83bb" name="Default Changelist" comment="Full Update V2.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/AimAndShoot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/Auton4MTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/AutonTraj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/CrossLineTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/SetWristSetpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/StopAimAndShooter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Climber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Wrist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="89b9751d-0331-407e-9be1-ff307f6f83bb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Infinite-Recharge-2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Infinite-Recharge-2020.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Arm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Boomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Drivetrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Intake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580748269874</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Full Update V3.">
+      <created>1585863242483</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585863242483</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,7 +276,8 @@
     <MESSAGE value="Added Shuffle board." />
     <MESSAGE value="Added a PID control loop with a potentiometer for the Arm Subsystem." />
     <MESSAGE value="Full Update V2." />
-    <option name="LAST_COMMIT_MESSAGE" value="Full Update V2." />
+    <MESSAGE value="Full Update V3." />
+    <option name="LAST_COMMIT_MESSAGE" value="Full Update V3." />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="94" key="#Notifications" timestamp="1581893078848">
@@ -305,18 +296,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="732" y="429" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582007242527" />
-    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1581631647071">
+    <state x="318" y="44" key="CommitChangelistDialog2" timestamp="1585863239805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581631647071" />
+    <state x="318" y="44" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585863239805" />
     <state x="184" y="92" key="DiffContextDialog" timestamp="1581631619991">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="92" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581631619991" />
-    <state x="690" y="155" key="FileChooserDialogImpl" timestamp="1583402951976">
+    <state x="690" y="155" key="FileChooserDialogImpl" timestamp="1585863461940">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="155" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583402951976" />
+    <state x="690" y="155" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585863461940" />
     <state width="1865" height="266" key="GridCell.Tab.0.bottom" timestamp="1583954214602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -341,6 +332,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="337" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582966023443" />
+    <state x="452" y="187" key="Vcs.Push.Dialog.v2" timestamp="1585863244530">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="452" y="187" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585863244530" />
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580330838785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -349,10 +344,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="230" y="7" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1582007069801" />
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1583954214582">
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup" timestamp="1585863320656">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583954214582" />
+    <state x="532" y="237" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585863320656" />
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1582362938277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
